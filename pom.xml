@@ -12,5 +12,6 @@
 
     <modules>
         <module>news-fetcher-service</module>
+        <module>bookmarks-service</module>
     </modules>
 </project>
