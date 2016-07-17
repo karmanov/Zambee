@@ -4,4 +4,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class BookmarkController {
+
+
+    public String hello() {
+        return "world";
+    }
+
 }
