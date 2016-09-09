@@ -1,12 +1,12 @@
-package io.zambee.bookmarks;
+package io.zambee.crawler;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Application {
+public class CrawlerServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
+		SpringApplication.run(CrawlerServiceApplication.class, args);
 	}
 }
