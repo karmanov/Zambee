@@ -100,8 +100,8 @@ public class ArticleTextExtractor {
      *             with improper HTML, although jSoup should be able to handle minor stuff.
      * @returns extracted article, all HTML tags stripped
      */
-    public JResult extractContent(Document doc) throws Exception {
-        return extractContent(new JResult(), doc, formatter);
+    public JResult extractContent(Document html) throws Exception {
+        return extractContent(new JResult(), html, formatter);
     }
 
     public JResult extractContent(Document doc, OutputFormatter formatter) throws Exception {
@@ -119,8 +119,6 @@ public class ArticleTextExtractor {
     public JResult extractContent(JResult res, String html, OutputFormatter formatter) throws Exception {
         if (html.isEmpty())
             throw new IllegalArgumentException("html string is empty!?");
-
-        // http://jsoup.org/cookbook/extracting-data/selector-syntax
         return extractContent(res, Jsoup.parse(html), formatter);
     }
 
@@ -162,7 +160,6 @@ public class ArticleTextExtractor {
 
             // clean before grabbing text
             String text = formatter.getFormattedText(bestMatchElement);
-            text = removeTitleFromText(text, res.getTitle());
             // this fails for short facebook post and probably tweets: text.length() > res.getDescription().length()
             if (text.length() > res.getTitle().length()) {
                 res.setText(text);
@@ -542,17 +539,8 @@ public class ArticleTextExtractor {
         return SHelper.count(imageUrl, "ad") >= 2;
     }
 
-    /**
-     * Match only exact matching as longestSubstring can be too fuzzy
-     */
-    public String removeTitleFromText(String text, String title) {
-        // don't do this as its terrible to read
-//        int index1 = text.toLowerCase().indexOf(title.toLowerCase());
-//        if (index1 >= 0)
-//            text = text.substring(index1 + title.length());
-//        return text.trim();
-        return text;
-    }
+
+
 
     /**
      * based on a delimeter in the title take the longest piece or do some

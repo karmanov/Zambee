@@ -33,7 +33,7 @@ public class BookmarksServiceTest {
         File file = resource.getFile();
         InputStream targetStream = new FileInputStream(file);
         MockMultipartFile firstFile = new MockMultipartFile("data", "filename.txt", "text/plain", targetStream);
-        BookmarksReportDTO bookmarksReportDTO = bookmarksService.processFile(firstFile);
+        BookmarksReportDTO bookmarksReportDTO = bookmarksService.saveBookmarksFromFile(firstFile);
         assertEquals(4, bookmarksReportDTO.getBookmarks().size());
     }
 }

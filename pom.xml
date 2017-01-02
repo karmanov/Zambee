@@ -15,6 +15,9 @@
         <module>bookmarks-service</module>
         <module>api-gateway</module>
         <module>crawler-service</module>
+        <module>config-service</module>
+        <module>eureka-service</module>
+        <module>../zambee-config</module>
 
     </modules>
 </project>
