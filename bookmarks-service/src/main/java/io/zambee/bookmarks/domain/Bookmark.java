@@ -4,7 +4,6 @@ import lombok.*;
 import org.joda.time.DateTime;
 import org.springframework.data.annotation.Id;
 
-import java.util.Date;
 import java.util.UUID;
 
 @Data

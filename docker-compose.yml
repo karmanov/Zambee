@@ -1,0 +1,31 @@
+version: '2'
+services:
+  config:
+    image: zambee/config-service
+    restart: always
+    ports:
+     - 10000:10000
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+  eureka:
+    image: zambee/eureka-service
+    restart: always
+    ports:
+     - 8761:8761
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+#  api-gateway:
+#    image: zambee/api-gateway
+#    restart: always
+#    ports:
+#     - 10100:10100
+#    logging:
+#      options:
+#        max-size: "10m"
+#        max-file: "10"

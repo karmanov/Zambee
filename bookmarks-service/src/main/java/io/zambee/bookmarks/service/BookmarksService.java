@@ -2,13 +2,8 @@ package io.zambee.bookmarks.service;
 
 
 import io.zambee.bookmarks.domain.Bookmark;
-import io.zambee.bookmarks.dto.Article;
-import io.zambee.bookmarks.dto.ArticleParseRequest;
 import io.zambee.bookmarks.dto.BookmarksReportDTO;
-import io.zambee.bookmarks.dto.CollectionDTO;
 import io.zambee.bookmarks.repository.BookmarkRepository;
-import io.zambee.bookmarks.repository.BookmarksInMemoryRepository;
-import io.zambee.bookmarks.service.client.CrawlerClient;
 import lombok.extern.slf4j.Slf4j;
 import org.joda.time.DateTime;
 import org.jsoup.Jsoup;
@@ -22,7 +17,6 @@ import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -30,9 +24,6 @@ import java.util.stream.Collectors;
 @Slf4j
 @Service
 public class BookmarksService {
-
-    @Autowired
-    private BookmarksInMemoryRepository repository;
 
 //    private CrawlerClient crawlerClient;
 
@@ -53,7 +44,6 @@ public class BookmarksService {
 
     public List<Bookmark> findAll() {
         return bookmarkRepository.findAll();
-//        return repository.findAll();
     }
 
     public BookmarksReportDTO saveBookmarksFromFile(MultipartFile file) {
@@ -61,6 +51,7 @@ public class BookmarksService {
             InputStream inputStream = new BufferedInputStream(file.getInputStream());
             Document document = Jsoup.parse(inputStream, "UTF-8", "http://example.com");
             List<Bookmark> bookmarks = parseDocument(document);
+//            bookmarkRepository.save(bookmarks);
 //            Map<String, Integer> duplicates = findDuplicates(bookmarks);
             log.info("Processed {} bookmarks", bookmarks.size());
             return new BookmarksReportDTO(bookmarks, Collections.emptyMap());

@@ -11,7 +11,6 @@
     <name>zambee</name>
 
     <modules>
-        <module>news-fetcher-service</module>
         <module>bookmarks-service</module>
         <module>api-gateway</module>
         <module>crawler-service</module>
