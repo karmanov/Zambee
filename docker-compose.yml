@@ -10,7 +10,7 @@ services:
         max-size: "10m"
         max-file: "10"
 
-  eureka:
+  registry:
     image: zambee/eureka-service
     restart: always
     ports:
@@ -20,12 +20,12 @@ services:
         max-size: "10m"
         max-file: "10"
 
-#  api-gateway:
-#    image: zambee/api-gateway
-#    restart: always
-#    ports:
-#     - 10100:10100
-#    logging:
-#      options:
-#        max-size: "10m"
-#        max-file: "10"
+  api-gateway:
+    image: zambee/api-gateway
+    restart: always
+    ports:
+     - 10100:10100
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
