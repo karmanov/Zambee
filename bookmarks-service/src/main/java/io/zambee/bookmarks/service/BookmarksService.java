@@ -21,50 +21,43 @@ import java.net.URL;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static io.zambee.bookmarks.utils.DateTimeUtils.unixTimeToDate;
+
 @Slf4j
 @Service
 public class BookmarksService {
 
-//    private CrawlerClient crawlerClient;
-
     @Autowired
     private BookmarkRepository bookmarkRepository;
-
-//    @Autowired
-//    public BookmarksService(BookmarksInMemoryRepository repository, CrawlerClient crawlerClient,
-//                            BookmarkRepository bookmarkRepository) {
-//        this.crawlerClient = crawlerClient;
-//        this.repository = repository;
-//        this.bookmarkRepository = bookmarkRepository;
-//    }
-
-//    public Article getBookmarkText(ArticleParseRequest request) {
-//        return crawlerClient.crawleArticle(request);
-//    }
 
     public List<Bookmark> findAll() {
         return bookmarkRepository.findAll();
     }
 
     public BookmarksReportDTO saveBookmarksFromFile(MultipartFile file) {
+        List<Bookmark> bookmarks = Collections.emptyList();
+        Map<String, Integer> duplicates = Collections.emptyMap();
         try {
             InputStream inputStream = new BufferedInputStream(file.getInputStream());
             Document document = Jsoup.parse(inputStream, "UTF-8", "http://example.com");
-            List<Bookmark> bookmarks = parseDocument(document);
-//            bookmarkRepository.save(bookmarks);
-//            Map<String, Integer> duplicates = findDuplicates(bookmarks);
+            bookmarks = parseDocument(document);
+            duplicates = findDuplicates(bookmarks);
             log.info("Processed {} bookmarks", bookmarks.size());
-            return new BookmarksReportDTO(bookmarks, Collections.emptyMap());
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("Could not parse bookmarks file. Reason {}", e.getMessage());
         }
-        return new BookmarksReportDTO(Collections.emptyList(), Collections.emptyMap());
+        return buildResponseDTO(bookmarks, duplicates);
+    }
+
+    private BookmarksReportDTO buildResponseDTO(List<Bookmark> bookmarks, Map<String, Integer> duplicates) {
+        return new BookmarksReportDTO(bookmarks, duplicates);
     }
 
     private void setBookmarksStatus(List<Bookmark> bookmarks) {
         log.info("Checking status for {} bookmarks started in {}", bookmarks.size());
         long startTime = DateTime.now().getMillis();
         bookmarks.forEach(b -> {
+            log.debug("Processing url: {}", b.getHref());
             int i = checkUrlStatus(b.getHref());
             b.setLastUpdateOn(DateTime.now());
             b.setStatusCode(i);
@@ -87,11 +80,6 @@ public class BookmarksService {
         bookmark.setIcon(e.attr("ICON"));
         bookmark.setName(e.text());
         return bookmark;
-    }
-
-    private DateTime unixTimeToDate(String sUnixTime) {
-        long l = Long.parseLong(sUnixTime);
-        return new DateTime(l * 1000);
     }
 
     private Map<String, Integer> findDuplicates(List<Bookmark> bookmarks) {
