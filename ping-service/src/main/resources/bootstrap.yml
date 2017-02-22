@@ -1,9 +1,8 @@
 spring:
   application:
-    name: eureka-service
+    name: ping-service
   cloud:
     config:
-#      uri: http://localhost:10000
       uri: http://config:10000
       fail-fast: true
 
@@ -15,3 +14,4 @@ spring:
     config:
       uri: http://localhost:10000
       fail-fast: true
+

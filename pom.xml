@@ -16,5 +16,6 @@
         <module>crawler-service</module>
         <module>config-service</module>
         <module>eureka-service</module>
+        <module>ping-service</module>
     </modules>
 </project>

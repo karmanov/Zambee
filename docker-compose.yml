@@ -29,3 +29,13 @@ services:
       options:
         max-size: "10m"
         max-file: "10"
+
+  ping-service:
+    image: zambee/ping-service
+    restart: always
+    ports:
+     - 10500:10500
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
