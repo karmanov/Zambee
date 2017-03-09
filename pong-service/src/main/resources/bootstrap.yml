@@ -1,6 +1,6 @@
 spring:
   application:
-    name: ping-service
+    name: pong-service
   cloud:
     config:
       uri: http://config:10000

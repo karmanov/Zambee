@@ -1,12 +1,15 @@
-package io.zambee.pong.dto;
+package io.zambee.api.dto.pong;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.joda.time.DateTime;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.UUID;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class PongResponseDTO {
 
     private UUID id;

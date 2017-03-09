@@ -1,4 +1,4 @@
-package io.zambee.ping.dto;
+package io.zambee.api.dto.ping;
 
 
 import lombok.AllArgsConstructor;

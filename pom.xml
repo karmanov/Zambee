@@ -17,5 +17,7 @@
         <module>config-service</module>
         <module>eureka-service</module>
         <module>ping-service</module>
+        <module>spring-boot-admin</module>
+        <module>java-api</module>
     </modules>
 </project>
