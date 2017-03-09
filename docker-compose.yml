@@ -39,3 +39,13 @@ services:
       options:
         max-size: "10m"
         max-file: "10"
+
+  pong-service:
+    image: zambee/pong-service
+    restart: always
+    ports:
+     - 10600:10600
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"

@@ -1,0 +1,11 @@
+spring.application.name=spring-boot-admin
+server.port=8082
+eureka.client.serviceUrl.defaultZone=${EUREKA_SERVICE_URL:http://localhost:8761}/eureka/  
+#
+#eureka:
+#  instance:
+#    prefer-ip-address: true
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:8761/eureka/
+#spring.boot.admin.discovery.management.context-path:/admin
