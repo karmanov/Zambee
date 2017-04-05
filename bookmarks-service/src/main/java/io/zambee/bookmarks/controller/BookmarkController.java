@@ -1,9 +1,10 @@
 package io.zambee.bookmarks.controller;
 
-import io.zambee.bookmarks.domain.Bookmark;
-import io.zambee.bookmarks.dto.BookmarksReportDTO;
+import io.zambee.api.dto.bookmarks.BookmarkDTO;
+import io.zambee.api.dto.bookmarks.BookmarksReportDTO;
 import io.zambee.bookmarks.service.BookmarksService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -28,12 +29,12 @@ public class BookmarkController {
     }
 
     @RequestMapping(value = "/{id}/status", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Bookmark getById(@PathVariable UUID id) {
-        return null;
+    public HttpStatus getById(@PathVariable UUID id) {
+        return bookmarksService.getBookmarkStatus(id);
     }
 
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Bookmark> findAll() {
+    public List<BookmarkDTO> findAll() {
         return bookmarksService.findAll();
     }
 

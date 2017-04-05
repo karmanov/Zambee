@@ -3,4 +3,13 @@ spring:
     name: crawler-service
   cloud:
     config:
+      uri: http://config:10000
+
+---
+
+spring:
+  profiles: development
+  cloud:
+    config:
       uri: http://localhost:10000
+      fail-fast: true

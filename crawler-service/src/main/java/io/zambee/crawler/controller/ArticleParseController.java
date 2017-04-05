@@ -1,8 +1,8 @@
 package io.zambee.crawler.controller;
 
 
-import io.zambee.crawler.dto.ArticleParseRequest;
-import io.zambee.crawler.dto.ArticleParseResponse;
+import io.zambee.api.dto.crawler.ArticleParseRequest;
+import io.zambee.api.dto.crawler.ArticleParseResponse;
 import io.zambee.crawler.service.ArticleParseService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

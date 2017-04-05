@@ -2,7 +2,6 @@ package io.zambee.bookmarks.domain;
 
 import lombok.*;
 import org.joda.time.DateTime;
-import org.springframework.data.annotation.Id;
 
 import java.util.UUID;
 
@@ -13,7 +12,7 @@ import java.util.UUID;
 @EqualsAndHashCode(exclude = {"addDate", "name"})
 public class Bookmark {
 
-    @Id
+//    @Id
     private UUID id;
 
     private String href;

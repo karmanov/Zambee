@@ -12,4 +12,10 @@ spring:
     name: spring-boot-admin
 zuul:
    sensitiveHeaders:
+management.security.enabled: false
+spring.boot.admin.routes.endpoints: env,metrics,trace,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,hystrix.stream,loggers
+
+spring.boot.admin.turbine:
+  clusters: default
+  location: turbine
 #spring.boot.admin.discovery.management.context-path: /admin

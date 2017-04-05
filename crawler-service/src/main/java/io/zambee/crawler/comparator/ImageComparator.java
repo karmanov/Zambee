@@ -1,7 +1,7 @@
 package io.zambee.crawler.comparator;
 
-import io.zambee.crawler.dto.ImageResult;
-import org.springframework.stereotype.Component;
+
+import io.zambee.api.dto.crawler.ImageResult;
 
 import java.util.Comparator;
 

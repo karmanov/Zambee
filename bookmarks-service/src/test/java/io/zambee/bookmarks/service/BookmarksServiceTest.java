@@ -1,6 +1,6 @@
 package io.zambee.bookmarks.service;
 
-import io.zambee.bookmarks.dto.BookmarksReportDTO;
+import io.zambee.api.dto.bookmarks.BookmarksReportDTO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 
-import static junit.framework.TestCase.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

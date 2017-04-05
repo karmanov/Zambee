@@ -4,7 +4,6 @@ spring:
   cloud:
     config:
       uri: http://config:10000
-#      uri: http://localhost:10000
 
 ---
 
