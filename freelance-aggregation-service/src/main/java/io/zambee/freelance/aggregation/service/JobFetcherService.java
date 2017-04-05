@@ -24,7 +24,7 @@ public class JobFetcherService {
 
     private void processDocument(Document document) {
         Elements elementsByClass = document.getElementsByClass("job-tile");
-        elementsByClass.stream().peek(e -> processElement(e));
+        elementsByClass.forEach(this::processElement);
         log.info("Found {} jobs on the first page", elementsByClass.size());
     }
 
