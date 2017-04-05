@@ -2,3 +2,6 @@
 [![codecov](https://codecov.io/gh/karmanov/zambee/branch/master/graph/badge.svg)](https://codecov.io/gh/karmanov/zambee)
 
 Project Zambee
+
+Test 1
+Test 2
